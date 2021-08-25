@@ -1,0 +1,115 @@
+version: "2.0"
+
+stories:
+
+- story: Chào - tên - hỏi chức năng - chào
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_name
+  - action: utter_ask_name
+  - intent: ask_func_list
+  - slot_was_set:
+      - name: Kiên
+      - name: Lâm
+      - name: Khoa
+      - name: Thành
+      - name: Thiện
+  - action: utter_func_list
+  - intent: bye
+  - action: utter_bye
+
+- story: Chào  - hỏi chức năng - chào
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_func_list
+  - slot_was_set:
+      - name: Kiên
+      - name: Lâm
+      - name: Khoa
+      - name: Thành
+      - name: Thiện
+  - action: utter_func_list
+  - intent: bye
+  - action: utter_bye
+
+- story: Hỏi tên - hỏi chức năng -cảm ơn
+  steps:
+  - intent: ask_name
+  - action: utter_ask_name
+  - intent: ask_func_list
+  - slot_was_set:
+      - name: Kiên
+      - name: Lâm
+      - name: Khoa
+      - name: Thành
+      - name: Thiện
+  - action: utter_func_list
+  - intent: thank
+  - action: utter_thank
+
+- story: Chào - hỏi tên - hỏi chức năng - hỏi kết quả sổ xố - data covid - recomend ăn trưa
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: give_name
+  - slot_was_set:
+      - name: Kiên
+      - name: Lâm
+      - name: Khoa
+      - name: Thành
+      - name: Thiện
+  - action: utter_greet_with_name
+  - intent: ask_name
+  - action: utter_ask_name
+  - intent: ask_func_list
+  - slot_was_set:
+      - name: Kiên
+      - name: Lâm
+      - name: Khoa
+      - name: Thành
+      - name: Thiện
+  - action: utter_func_list
+  - intent: ask_lottery
+  - action: action_get_lottery
+  - intent: corona_tracker
+  - slot_was_set:
+      - country: USA
+      - country: VietNam
+      - country: Australia
+  - action: action_corona_tracker
+  - intent: ask_for_lunch
+  - action: action_recommend
+  - intent: thank
+  - action: utter_thank
+
+- story: ĐƯa tên
+  steps:
+  - intent: give_name
+  - slot_was_set:
+      - name: Kiên
+      - name: Lâm
+      - name: Khoa
+      - name: Thành
+      - name: Thiện
+  - action: utter_greet_with_name
+
+- story: Hỏi kết quả bệnh dịch
+  steps:
+  - intent: corona_tracker
+  - slot_was_set:
+      - country: USA
+      - country: VietNam
+      - country: Australia
+  - action: action_corona_tracker
+
+- story: Hỏi kết quả sổ xố
+  steps:
+  - intent: ask_lottery
+  - action: action_get_lottery
+
+- story: random ăn bữa trưa
+  steps:
+  - intent: ask_for_lunch
+  - action: action_recommend

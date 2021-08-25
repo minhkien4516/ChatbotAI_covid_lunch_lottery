@@ -1,0 +1,17 @@
+version: "2.0"
+
+rules:
+- rule: Hỏi tên - hỏi chức năng -cảm ơn
+  steps:
+  - intent: bye
+  - action: utter_bye
+
+- rule: Chào  - hỏi chức năng - chào
+  steps:
+  - intent: ask_func_list
+  - action: utter_func_list
+
+- rule: Chào ngoan ngoãn
+  steps:
+  - intent: give_name
+  - action: utter_greet_with_name

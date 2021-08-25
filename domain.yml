@@ -1,0 +1,68 @@
+version: "2.0"
+
+intents:
+  - greet
+  - thank
+  - bye
+  - ask_func_list
+  - ask_name
+  - give_name
+  - ask_lottery
+  - corona_tracker
+  - ask_for_lunch
+
+entities:
+  - country
+  - name
+
+slots:
+  name:
+    type: text
+  country:
+    type: text
+
+
+
+responses:
+  utter_greet:
+  - text: "Chào bạn, cần mình hỗ trợ gì không nè?!"
+  - text: "Hi, mình là bot, bạn cần gì cứ hỏi, đừng ngại nhé!"
+
+  utter_greet_with_name:
+  - text: "Kính chào anh {name}. Bot có thể giúp gì được anh {name} ạ?"
+
+  utter_bye:
+  - text: "Kính chào tạm biệt và chúc quý khách một ngày tốt lành!"
+    image: "http://houseofbots.com/images/news/3408/cover.png"
+
+  utter_thank:
+  - text: "Cảm ơn quý khách quá khen ah!"
+  - text: "Dạ không có gì, đó là trách nhiệm của em mà!"
+
+  utter_func_list:
+  - text: "Em có thể làm được rất nhiều thứ: lập trình, đọc thoại, hát, đọc thơ, đọc chuyện...nhưng giờ em có thể đọc xổ số và data covid , tiện thể giúp cho anh {name} ăn gì vào bữa trưa thôi!"
+
+  utter_ask_name:
+  - text: "Em họ Chat, tên Bot! Người ta hay gọi em là Chat Bot thông minh xinh đẹp giỏi giang nhất vũ trụ ạ! Quý khách cần trợ giúp gì ạ?"
+  - text: "Dạ thưa. Tên Tiếng Việt của em là Trợ lý ảo nhưng em thích gọi bằng tên Tiếng Anh là  ChatBot cho nó Tây!"
+
+  utter_unclear:
+    - text: "Thưa quý khách, hiện tại tôi chưa hiểu được yêu cầu của Quý khách. "
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+# templates (as they are reply actions),
+# also custom actions if any
+ - utter_greet
+ - utter_greet_with_name
+ - utter_bye
+ - utter_unclear
+ - utter_func_list
+ - utter_thank
+ - utter_ask_name
+ - action_get_lottery
+ - action_corona_tracker
+ - action_recommend
